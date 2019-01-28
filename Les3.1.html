@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <textarea name="tekstVak" id="tekst" cols="60" rows="30" onkeyup="stringManipulator()">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quidem aliquam voluptas tempora. Reprehenderit deleniti sunt voluptates. Libero possimus cum, tempora modi sequi nam, eligendi repudiandae hic, totam asperiores.</textarea>;
+    <div>
+        <p>Aantal letters: <span id="aantalLetters"> ...</span></p>
+        <p>Aantal Woorden: <span id="aantalWoorden"> ...</span></p>
+        <p>Laatste woord: <span id="laatsteWoord"> ...</span></p>
+        <p>'Syntra' komt voor: <span id="boolSyntra"> ...</span></p>
+    </div>
+
+    <button onclick="uppercase()">
+        To Uppercase
+    </button>
+    <button onclick="lowercase()">
+        To Lowercase
+    </button>
+
+    <script>
+        function stringManipulator() {
+            //tekst in een string steken
+            var tekstSelecteren = document.querySelector("#tekst");
+            var tekst = tekstSelecteren.value;
+
+            //nagaan hoeveel chars de tekst bevat
+            var tekstLengte = tekst.length;
+
+            document.querySelector("#aantalLetters").innerHTML = tekstLengte;
+
+
+            //nagaan hoeveel woorden de tekst bevat
+            var woordenArray = tekst.split(" ");
+
+            var woordenCount = woordenArray.length;
+            document.querySelector("#aantalWoorden").innerHTML = woordenCount;
+
+            //het laatste woord in de array selecteren
+            document.querySelector("#laatsteWoord").innerHTML = (woordenArray[woordenCount - 1]);
+
+            var index = 0;
+            //syntra komt voor
+            if (tekst.indexOf("Syntra") != -1) {
+                document.querySelector("#boolSyntra").innerHTML = "True";
+            } else {
+                document.querySelector("#boolSyntra").innerHTML = "False";
+            }
+        }
+
+        function uppercase() {
+            var upperCase = document.querySelector("#tekst");
+            upperCase.value = (upperCase.value).toUpperCase();
+
+        }
+
+        function lowercase() {
+            var lowerCase = document.querySelector("#tekst");
+            lowerCase.value = (lowerCase.value).toLowerCase();
+
+
+
+        }
+
+        window.addEventListener("load", stringManipulator());
+    </script>
+
+</body>
+
+</html>
